@@ -3,13 +3,12 @@ Reproducible Research: Peer Assessment 1
 
 Nov. 06, 2015
 
-This is an R Markdown document for Peer Assessment 1 of online course "Reproducible Research". In this assignment, I will read, process and 
-plot the data to answer the questions.
+This is a R Markdown document for Peer Assessment 1 of online course "Reproducible Research". In this assignment, I will read, process and plot the data to answer the questions.
 
 Step 1: Loading and preprocessing the data
 ------------------------------------------------------------
 
-```{r}
+```{r, echo=TRUE}
 setwd("F:/CuiHuan/data Science/Course5_Reproducible_Research/project1")
 library(dplyr)
 library(lattice)
@@ -41,7 +40,7 @@ in the dataset.
 
 The histogram of the total number of steps taken each day is given by the following code:
 
-```{r}
+```{r, echo=TRUE}
 #Calculate the total number of steps taken per day
 
 by_day<-group_by(activity_new, date)
@@ -59,14 +58,14 @@ hist(steps_by_day$steps, main = "Histogram of total steps
 
 Calculate and report the mean and median of the total number of steps taken per day:
 
-```{r}
+```{r, echo=TRUE}
 steps_mean<-mean(steps_by_day$steps)
 steps_median<-median(steps_by_day$steps)
 result<-cbind(steps_mean, steps_median)
 ```
 
 The Mean and Median number of steps per day is:
-```{r}
+```{r, echo=TRUE}
 result
 ```
 
@@ -75,7 +74,7 @@ result
 1.Make a time series plot (i.e. type = "l") of the 5-minute interval (x-axis) 
 and the average number of steps taken, averaged across all days (y-axis)
 
-```{r}
+```{r, echo=TRUE}
 steps_by_interval<-aggregate(activity_new$steps, 
                              by=list(activity_new$interval),
                              FUN=mean, na.rm=TRUE)
@@ -91,14 +90,14 @@ plot(steps_by_interval$interval, steps_by_interval$meansteps, type='l',
 2.Which 5-minute interval, on average across all the days in the dataset, 
 contains the maximum number of steps? 
 
-```{r}
+```{r, echo=TRUE}
 max=max(steps_by_interval$meansteps)
 max_row<-which(steps_by_interval$meansteps==max)
 max_interval<-steps_by_interval[max_row,]
 ```
 
 Therfore the 5-minute interval contains the maximum number of steps is:
-```{r}
+```{r, echo=TRUE}
 max_interval
 ```
 
@@ -108,12 +107,12 @@ max_interval
 1.Calculate and report the total number of missing values in the 
 dataset (i.e. the total number of rows with NAs)
 
-```{r}
+```{r, echo=TRUE}
 NA_number<-sum(is.na(activity$steps))
 ```
 
 The number of missing values in the dataset is:
-```{r}
+```{r, echo=TRUE}
 NA_number
 ```
 
@@ -126,7 +125,7 @@ dataset but with the missing data filled in.
 Here I use the mean steps for every 5 minutes interval to Create a new dataset 
 that is equal to the original dataset but with the missing data filled in:
 
-```{r}
+```{r, echo=TRUE}
 #calculate the mean for 5 minutes interval
 mean_steps_interval<-mean(steps_by_interval$meansteps)  
 
@@ -141,7 +140,7 @@ for (i in 1:nrow(activity_new)){
 4.Make a histogram of the total number of steps taken each day 
 and Calculate and report the mean and median total number of steps 
 taken per day
-```{r}
+```{r, echo=TRUE}
 #group data by day
 by_day<-group_by(activity_new, date)
 all_steps_by_day<-summarise(by_day, steps=sum(steps))
@@ -159,7 +158,7 @@ result_day<-cbind(all_steps_mean, all_steps_median)
 ```
 
 Now the Mean and Median number of total steps are:
-```{r}
+```{r, echo=TRUE}
 result_day
 ```
 
@@ -172,7 +171,7 @@ weekday or weekend day. Make a panel plot containing a time series plot
 (i.e. type = "l") of the 5-minute interval (x-axis) and the average number of 
 steps taken, averaged across all weekday days or weekend days (y-axis)
 
-```{r}
+```{r, echo=TRUE}
 steps_by_daytype<-aggregate(activity_new$steps, 
                              by=list(activity_new$daytype, 
                                      activity_new$weekday,

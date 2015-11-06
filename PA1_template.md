@@ -3,8 +3,7 @@ Reproducible Research: Peer Assessment 1
 
 Nov. 06, 2015
 
-This is an R Markdown document for Peer Assessment 1 of online course "Reproducible Research". In this assignment, I will read, process and 
-plot the data to answer the questions.
+This is a R Markdown document for Peer Assessment 1 of online course "Reproducible Research". In this assignment, I will read, process and plot the data to answer the questions.
 
 Step 1: Loading and preprocessing the data
 ------------------------------------------------------------
@@ -13,22 +12,6 @@ Step 1: Loading and preprocessing the data
 ```r
 setwd("F:/CuiHuan/data Science/Course5_Reproducible_Research/project1")
 library(dplyr)
-```
-
-```
-## 
-## Attaching package: 'dplyr'
-## 
-## The following objects are masked from 'package:stats':
-## 
-##     filter, lag
-## 
-## The following objects are masked from 'package:base':
-## 
-##     intersect, setdiff, setequal, union
-```
-
-```r
 library(lattice)
 
 #load the raw data
